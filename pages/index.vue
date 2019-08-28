@@ -1,6 +1,14 @@
 <template>
   <div class="container">
     <h1>index page</h1>
+    <ul>
+      <li>
+        <nuxt-link to="/login">ログインページへ</nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/aurhed-route">認証が必要ページへ</nuxt-link>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -18,6 +26,7 @@ export default {
 .container {
   min-height: 100vh;
   display: flex;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: center;
   text-align: center;
