@@ -1,8 +1,8 @@
 {
-  "name": "my-first-nuxt-app",
+  "name": "sandbox",
   "version": "1.0.0",
-  "description": "Nuxt.js project",
-  "author": "Takuma Miura <21156330+tkm-mur@users.noreply.github.com>",
+  "description": "My great Nuxt.js project",
+  "author": "Takuma Miura",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -13,16 +13,27 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.5.4",
-    "moment": "^2.24.0",
-    "nuxt": "^2.0.0",
-    "universal-cookie": "^4.0.2"
+    "cross-env": "^5.2.0",
+    "nuxt": "^2.4.0",
+    "element-ui": "^2.4.11",
+    "@nuxtjs/axios": "^5.3.6"
   },
   "devDependencies": {
+    "nodemon": "^1.18.9",
+    "@nuxtjs/eslint-config": "^0.0.1",
     "babel-eslint": "^10.0.1",
-    "eslint": "^4.19.1",
-    "eslint-friendly-formatter": "^4.0.1",
-    "eslint-loader": "^2.1.1",
-    "eslint-plugin-vue": "^4.0.0"
+    "eslint": "^5.15.1",
+    "eslint-config-standard": ">=12.0.0",
+    "eslint-plugin-import": ">=2.16.0",
+    "eslint-plugin-jest": ">=22.3.0",
+    "eslint-plugin-node": ">=8.0.1",
+    "eslint-plugin-nuxt": ">=0.4.2",
+    "eslint-plugin-promise": ">=4.0.1",
+    "eslint-plugin-standard": ">=4.0.0",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-vue": "^5.2.2",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "prettier": "^1.16.4"
   }
 }
