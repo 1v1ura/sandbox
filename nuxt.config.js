@@ -45,7 +45,11 @@ export default {
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseUrl: 'https://nuxtblogapi.firebaseio.com'
+    baseURL: 'https://nuxtblogapi.firebaseio.com'
+  },
+
+  router: {
+    middleware: ['auth-cookie']
   },
 
   /*
