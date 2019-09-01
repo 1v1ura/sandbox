@@ -17,7 +17,5 @@ export default context => {
 
   if (!store.getters.user) {
     redirect('/')
-  } else {
-    redirect('/posts/')
   }
 }

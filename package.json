@@ -17,6 +17,8 @@
     "@nuxtjs/axios": "^5.3.6",
     "cross-env": "^5.2.0",
     "element-ui": "^2.4.11",
+    "lodash.clonedeep": "^4.5.0",
+    "moment": "^2.24.0",
     "nuxt": "^2.4.0",
     "universal-cookie": "^4.0.2"
   },
