@@ -1,3 +1,6 @@
+/* eslint-disable no-console */
+import moment from '@/plugins/moment'
+
 export const state = () => ({
   isLoggedIn: false,
   user: null
@@ -5,7 +8,13 @@ export const state = () => ({
 
 export const getters = {
   isLoggedIn: state => state.isLoggedIn,
-  user: state => state.user
+  user: state => {
+    console.log(
+      'getters state',
+      state.user ? { likes: [], ...state.user } : null
+    )
+    return state.user ? { likes: [], ...state.user } : null
+  }
 }
 
 export const mutations = {
@@ -24,6 +33,7 @@ export const actions = {
     if (!user.id) throw new Error('Invalid user')
     commit('setUser', { user })
   },
+
   async register({ commit }, payload) {
     const { id } = payload
     await this.$axios.$patch('/users.json', { [id]: payload })
@@ -31,5 +41,18 @@ export const actions = {
 
     if (!user.id) throw new Error('Invalid user')
     commit('setUser', { user })
+  },
+
+  async addLikeLogToUser({ commit }, payload) {
+    const { user, post } = payload
+
+    user.likes.push({
+      created_at: moment().format(),
+      user_id: user.id,
+      post_id: post.id
+    })
+
+    const newUser = await this.$axios.$put(`/users/${user.id}.json`, user)
+    commit('setUser', { user: newUser })
   }
 }

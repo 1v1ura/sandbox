@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
 import moment from '@/plugins/moment'
 
 export const state = () => ({
@@ -5,9 +7,7 @@ export const state = () => ({
 })
 
 export const getters = {
-  posts(state) {
-    return state.posts
-  }
+  posts: state => state.posts.map(post => ({ likes: [], ...post }))
 }
 
 export const mutations = {
@@ -15,7 +15,7 @@ export const mutations = {
     state.posts.push(payload)
   },
 
-  uploadPost(state, payload) {
+  updatePost(state, payload) {
     state.posts = state.posts.map(post => {
       return post.id === payload.id ? payload : post
     })
@@ -60,5 +60,18 @@ export const actions = {
     const { id } = payload
     const post = await this.$axios.$get(`/posts/${id}.json`)
     commit('addPost', { id, ...post })
+  },
+
+  async addLikeToPost({ commit }, payload) {
+    const { user, post } = payload
+
+    post.likes.push({
+      created_at: moment().format(),
+      user_id: user.id,
+      post_id: post.id
+    })
+
+    const newPost = await this.$axios.$put(`/posts/${post.id}.json`, post)
+    commit('updatePost', { post: newPost })
   }
 }

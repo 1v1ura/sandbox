@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Cookies from 'universal-cookie'
 
 export default context => {

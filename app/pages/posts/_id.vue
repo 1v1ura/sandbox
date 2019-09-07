@@ -8,6 +8,27 @@
         </div>
         <p>{{ post.body }}</p>
         <p class="text-right" style="margin-top: 16px;">
+          <el-button
+            v-if="isLiked"
+            :disabled="!isLoggedIn"
+            type="warning"
+            round
+            @click="unLike"
+          >
+            <span class="el-icon-star-on" />
+          </el-button>
+          <el-button
+            v-else
+            :disabled="!isLoggedIn"
+            type="warning"
+            round
+            @click="like"
+          >
+            <span class="el-icon-star-off" />
+            <span>{{ post.likes.lenght }}</span>
+          </el-button>
+        </p>
+        <p class="text-right" style="margin-top: 16px;">
           {{ post.created_at | time }}
         </p>
       </el-card>
@@ -19,8 +40,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+import { mapGetters, mapActions } from 'vuex'
+import cloneDeep from 'lodash.clonedeep'
 import moment from '@/plugins/moment'
+
 export default {
   filters: {
     time(val) {
@@ -30,9 +55,15 @@ export default {
   computed: {
     post() {
       return this.posts.find(post => {
+        console.log(post)
         return post.id === this.$route.params.id
       })
     },
+    isLiked() {
+      if (!this.user) return false
+      return this.post.likes.find(like => like.user_id === this.user.id)
+    },
+    ...mapGetters(['user', 'isLoggedIn']),
     ...mapGetters('posts', ['posts'])
   },
   async fetch({ route, store, redirect }) {
@@ -40,16 +71,29 @@ export default {
     const postData = store.getters['posts/posts'].find(post => post.id === id)
 
     if (!postData) {
-      try {
-        await store.dispatch('posts/fetchPost', { id })
-
-        if (!store.mapGetters['posts/posts'].find(post => post.id === id)) {
-          throw new Error('post no found')
-        }
-      } catch (error) {
-        redirect('/posts/')
-      }
+      await store.dispatch('posts/fetchPost', { id })
     }
+  },
+  methods: {
+    like() {
+      if (!this.isLoggedIn) {
+        return false
+      }
+
+      const likePayload = { user: this.user, post: this.post }
+
+      this.addLikeToPost(cloneDeep(likePayload))
+      this.addLikeLogToUser(cloneDeep(likePayload))
+    },
+    unLike() {
+      if (!this.isLoggedIn) {
+        return false
+      }
+
+      console.log('unLike!!!!')
+    },
+    ...mapActions(['addLikeLogToUser']),
+    ...mapActions('posts', ['addLikeToPost'])
   }
 }
 </script>
