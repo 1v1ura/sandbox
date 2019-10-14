@@ -1,52 +1,17 @@
 {
   "name": "sandbox",
   "version": "1.0.0",
-  "description": "My perfect Nuxt.js project",
+  "description": "My magnificent Nuxt.js project",
   "author": "Takuma Miura",
   "private": true,
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate",
-    "test": "jest",
-    "test:coverage": "jest --coverage"
+    "generate": "nuxt generate"
   },
   "dependencies": {
     "nuxt": "^2.0.0"
   },
-  "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.1.0",
-    "@vue/test-utils": "^1.0.0-beta.29",
-    "babel-core": "^7.0.0-0",
-    "babel-jest": "^24.9.0",
-    "babel-preset-vue-app": "^2.0.0",
-    "jest": "^24.9.0",
-    "lodash.clonedeep": "^4.5.0",
-    "vue-jest": "^3.0.5"
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.js$": "babel-jest",
-      "^.*\\.(vue)$": "vue-jest"
-    },
-    "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/app/$1",
-      "^@@/(.*)$": "<rootDir>/$1",
-      "^~/(.*)$": "<rootDir>/app/$1",
-      "^~~/(.*)$": "<rootDir>/$1"
-    },
-    "moduleFileExtensions": ["js", "json", "vue"],
-    "collectCoverageFrom": ["app/**/*.{js,vue}"]
-  },
-  "babel": {
-    "env": {
-      "test": {
-        "presets": [
-          "@babel/preset-env"
-        ]
-      }
-    }
-  }
+  "devDependencies": {}
 }

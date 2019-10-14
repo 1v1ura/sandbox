@@ -1,20 +1,39 @@
 <template>
   <div class="container">
-    <h2>カウンター</h2>
-    <h3>Count: {{ count }}</h3>
-    <button type="button" @click="increment">Increment</button>
+    <div>
+      <logo />
+      <h1 class="title">
+        sandbox
+      </h1>
+      <h2 class="subtitle">
+        My magnificent Nuxt.js project
+      </h2>
+      <div class="links">
+        <a
+          href="https://nuxtjs.org/"
+          target="_blank"
+          class="button--green"
+        >
+          Documentation
+        </a>
+        <a
+          href="https://github.com/nuxt/nuxt.js"
+          target="_blank"
+          class="button--grey"
+        >
+          GitHub
+        </a>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import Logo from '~/components/Logo.vue'
 
 export default {
-  computed: {
-    ...mapGetters(['count'])
-  },
-  methods: {
-    ...mapActions(['increment'])
+  components: {
+    Logo
   }
 }
 </script>
@@ -24,7 +43,6 @@ export default {
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
-  flex-flow: column wrap;
   justify-content: center;
   align-items: center;
   text-align: center;

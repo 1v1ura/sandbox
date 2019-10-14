@@ -1,6 +1,6 @@
 # sandbox
 
-> My perfect Nuxt.js project
+> My magnificent Nuxt.js project
 
 ## Build Setup
 
