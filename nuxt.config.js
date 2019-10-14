@@ -38,7 +38,11 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/pwa'
   ],
+  workbox: {
+   dev: true //開発環境でもPWAできるように
+  },
   /*
   ** Build configuration
   */
